@@ -6,7 +6,7 @@ using tink.CoreApi;
 
 class NodejsConnector {
   static public function connect(to:Endpoint, handler:Handler):Promise<Noise> 
-    return Future.async(function (cb) {
+    return Future.irreversible(function (cb) {
       var native = to.secure ? js.node.Tls.connect(to.port, to.host) : js.node.Net.connect(to.port, to.host);
       
       native.on('error', function (e:{ code:String, message:String }) 

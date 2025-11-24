@@ -184,7 +184,7 @@ class NodeServer implements ServerObject {
     var server = js.node.Net.createServer();
     server.listen(port);
     return 
-      Future.async(function (cb) {
+      Future.irreversible(function (cb) {
         server.on('listening', function (_) {
           cb(Success((new NodeServer(server) : Server)));
         });

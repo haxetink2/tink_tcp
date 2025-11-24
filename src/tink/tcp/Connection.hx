@@ -103,7 +103,7 @@ class Connection {
           fail(e)
       );
     #elseif nodejs
-      return Future.async(function (cb) {
+      return Future.irreversible(function (cb) {
         
         var c:js.node.net.Socket = null;
         

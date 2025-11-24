@@ -46,7 +46,7 @@ class Limitter {
       if (running + queued >= maxQueued + maxRunning)
         None;
       else 
-        Some(Future.async(function (cb) {
+        Some(Future.irreversible(function (cb) {
           queue.add(function () {
             var ret = f();
             ret.handle(cb);

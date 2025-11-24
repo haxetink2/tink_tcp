@@ -10,7 +10,7 @@ class NodejsAcceptor {
   static public var inst(default, null):NodejsAcceptor = new NodejsAcceptor();
   function new() {}
   public function bind(?port:Int):Promise<OpenPort> 
-    return Future.async(function (cb) {
+    return Future.irreversible(function (cb) {
       
       var s = new SignalTrigger<Session>();
       var server = js.node.Net.createServer({ allowHalfOpen: true }, function (cnx) {
